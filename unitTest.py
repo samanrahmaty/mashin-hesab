@@ -1,27 +1,28 @@
 import unittest
-from calculator import add, subtract, multiply, divide
 
-class TestCalculatorFunctions(unittest.TestCase):
+class TestCalculator(unittest.TestCase):
 
     def test_add(self):
-        result = add(10, 5)
-        self.assertEqual(result, 15)
+        self.assertEqual(add(1, 2), 3)
+        self.assertEqual(add(-1, 1), 0)
+        self.assertEqual(add(-1, -1), -2)
 
     def test_subtract(self):
-        result = subtract(10, 5)
-        self.assertEqual(result, 5)
+        self.assertEqual(subtract(2, 1), 1)
+        self.assertEqual(subtract(-1, 1), -2)
+        self.assertEqual(subtract(-1, -1), 0)
 
     def test_multiply(self):
-        result = multiply(10, 5)
-        self.assertEqual(result, 50)
+        self.assertEqual(multiply(2, 3), 6)
+        self.assertEqual(multiply(-1, 1), -1)
+        self.assertEqual(multiply(-1, -1), 1)
 
     def test_divide(self):
-        result = divide(10, 5)
-        self.assertEqual(result, 2.0)
-
-    def test_divide_by_zero(self):
-        result = divide(10, 0)
-        self.assertEqual(result, "Error! Division by zero.")
+        self.assertEqual(divide(10, 2), 5)
+        self.assertEqual(divide(-1, 1), -1)
+        self.assertEqual(divide(-1, -1), 1)
+        with self.assertRaises(ValueError):
+            divide(1, 0)
 
 if name == 'main':
     unittest.main()
